@@ -5,64 +5,65 @@
 }
 
 @font-face {
-  font-family: OpenSans ;
-  src: url(OpenSans-Regular.ttf);
-  font-weight: bold;
+	font-family: OpenSans;
+	src: url(OpenSans-Regular.ttf);
+	font-weight: normal;
 }
 
 @font-face {
-  font-family: Dosis ;
-  src: url('fonts/Dosis-Regular.ttf');
-  font-weight: bold;
+	font-family: Dosis;
+	src: url('fonts/Dosis-Regular.ttf');
+	font-weight: normal;
 }
 
-html, body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
+html, body{
+	width: 100%;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
 	background-color: lightcyan;
 	color: black;
-	font-family: OpenSans, helvetica, sans-serif;
-	/*overflow-x: hidden;*/
-	/*width: 100%;*/
+	font-family: OpenSans, Helvetica, sans-serif;
 }
 
 body{
-	min-width: fit-content !important;
+	min-width: 0;
 }
 
+/* Top header */
 #website-logo-container{
 	position: relative;
-	top: 0px;
-	/*background-color: orange;*/
+	top: 0;
 	height: 47px;
 	background-color: black;
 }
 
+#website-logo-container a{
+	text-decoration: none;
+}
+
 #website-name{
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 40px;
 	color: lightgray;
-	padding-top: 7px;
-	font-size: 28px;
-	font-weight: bold;
-	font-family: Dosis;
+	padding-top: 10px;
+	font-size: 20px;
+	font-weight: none;
+	font-family: Dosis, sans-serif;
 }
 
 #logo{
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	width: 50px;
 	height: 50px;
 }
 
 #menu-container{
 	position: absolute;
-	right: 0px;
+	right: 0;
 	padding-top: 13px;
 	text-decoration: none;
 	color: lightgray;
@@ -78,129 +79,140 @@ body{
 	color: lightgray;
 }
 
+#menu:hover{
+	color: white;
+}
+
+/* Homepage hero */
 #background-container{
 	position: relative;
-	top: 0px;
-	background: url('bgimage.jpg');
+	top: 0;
+	min-height: calc(100vh - 47px);
+	width: 100%;
+	background:
+		linear-gradient(rgba(5, 15, 35, 0.45), rgba(5, 15, 35, 0.45)),
+		url('bgimage.jpg');
 	background-size: cover;
 	background-position: center;
-	height: 98%;
-	width: 100%;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
 }
 
 #image-title-container{
-	/*background-color: lightgray;*/
 	position: relative;
-	top: 18%;
-	margin-left: auto;
-	margin-right: auto;
-	/*height: 300px;*/
-	width: 700px;
+	z-index: 1;
+	width: min(1100px, calc(100% - 48px));
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 260px minmax(0, 1fr);
+	align-items: center;
+	gap: 56px;
+	padding: 40px 0;
 }
 
-
+/* Existing HTML has no hero-copy wrapper, so use grid placement */
 #image{
+	grid-column: 1;
+	grid-row: 1 / span 4;
 	width: 250px;
 	height: 250px;
-	position: absolute;
-	top: 25px;
-	left: 50px;
+	position: static;
 	border-radius: 50%;
-	border: 0px solid steelblue;
+	object-fit: cover;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+	justify-self: center;
 }
 
 #title{
-	font-size: 40px;
-	position: absolute;
-	left: 350px;	
-	top: 40px;
-	width: 330px;
-	/*background-color: orange;*/
-	color: black;
+	grid-column: 2;
+	grid-row: 1;
+	font-size: clamp(2rem, 4vw, 3.2rem);
+	position: static;
+	width: auto;
+	margin: 0 0 2px 0;
+	color: white;
+	line-height: 1.05;
 }
 
 #location{
-	position: absolute;
-	left: 350px;
-	top: 100px;
+	grid-column: 2;
+	grid-row: 2;
+	position: static;
+	margin: 0 0 2px 0;
 	text-transform: uppercase;
-	color: black;
+	color: rgba(255, 255, 255, 0.88);
+	letter-spacing: 0.08em;
 }
 
 #introtext{
-	position: absolute;
-	top: 160px;
-	left: 350px;
-	width: 330px;
-	font-size: 17px;
-	color: black;
-	/*background-color: yellow;*/
+	grid-column: 2;
+	grid-row: 3;
+	position: static;
+	width: auto;
+	max-width: 48ch;
+	font-size: 1.08rem;
+	line-height: 1.75;
+	color: rgba(255, 255, 255, 0.95);
+	margin: 0;
 }
 
-#social-media-container{
-	position: absolute;
-	right: 15px;
-	top: 5px;
-	height: 60px;
-	/*border: 1px solid blue;*/
+#introtext a:link,
+#introtext a:visited{
+	color: inherit;
+	text-decoration: underline;
+	text-underline-offset: 3px;
 }
 
-#social-media-button{
-	position: relative;
-	margin-left: 5px;
-	margin-right: 5px;
-	font-size: 35px;
-	left: 5px;
-	top: 5px;
-}
-
-.button{
-  border: lightgray 1px solid;
-  color: lightgray;
-  background: transparent;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 0%;
-  width: 180px;
-}
-
-.button:hover {
-  color: white;
-  background-color: black;
-  opacity: 0.3;
-  border: white 1px solid;
+#introtext a:hover,
+#introtext a:active{
+	color: #ffffff;
 }
 
 #button-container{
-	position: absolute;
-	bottom: 30px;
-	/*border: 1px solid white;*/
-	width: 800px;
-	height: 70px;
-	left: 25%;
+	grid-column: 2;
+	grid-row: 4;
+	position: static;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 26px;
+	width: auto;
+	height: auto;
 }
 
-#button-cv{
-	position: absolute;
-	left: 0px;
+.button,
+.button:link,
+.button:visited,
+.button:hover,
+.button:active{
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	color: white;
+	background: rgba(255, 255, 255, 0.08);
+	padding: 14px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	margin: 0;
+	transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+	cursor: pointer;
+	border-radius: 999px;
+	min-width: 150px;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
 }
 
-#button-internship{
-	position: absolute;
-  	left: 300px;
+.button:hover{
+	color: #081018;
+	background-color: rgba(255, 255, 255, 0.92);
+	border-color: rgba(255, 255, 255, 0.92);
+	opacity: 1;
 }
 
-#button-contact{
-	position: absolute;
-  	left: 600px;
-}
-
+/* Footer */
 footer{
 	background-color: black;
 	color: lightgray;
@@ -208,14 +220,14 @@ footer{
 	text-align: center;
 }
 
+/* CV and content pages */
 .cvcontent{
 	margin: 10px;
 	border: 2px lightblue solid;
 	padding: 40px;
 	font-family: sans-serif;
-	/*border: 1px white solid;*/
 	position: relative;
-	left: 0px;
+	left: 0;
 	color: black;
 }
 
@@ -224,48 +236,44 @@ footer{
 	margin-top: 40px;
 }
 
-.cvcontent>table, .cvcontent>tr, .cvcontent>td{
+.cvcontent > table, .cvcontent > tr, .cvcontent > td{
 	text-align: left;
-	border: 0px;
+	border: 0;
 	border-collapse: separate;
 	border-spacing: 40px 15px;
-	/*margin-right: auto;
-	margin-left: auto;*/
 }
 
 .cvcontent td.date{
-	text-align:center;
+	text-align: center;
 	vertical-align: top;
-	border: 0px;
+	border: 0;
 	border-style: none;
-	border-color:lightgray;
+	border-color: lightgray;
 }
 
-a:link {
-  text-decoration: underline;
-  background-color: none;
-  border: 0px solid blue;
-  color: black;
-  display: inline;
-  width: 200px;
-  text-align: center;
-  margin-bottom: 1px;
+a:link{
+	text-decoration: underline;
+	background-color: none;
+	border: 0 solid blue;
+	color: black;
+	display: inline;
+	text-align: center;
+	margin-bottom: 1px;
 }
 
-a:visited {
-  text-decoration: underline;
-  background-color: none;
-  border: 0px solid blue;
-  color: steelblue;
-  display: inline;
-  width: 200px;
-  text-align: center;
-  margin-bottom: 1px;
+a:visited{
+	text-decoration: underline;
+	background-color: none;
+	border: 0 solid blue;
+	color: steelblue;
+	display: inline;
+	text-align: center;
+	margin-bottom: 1px;
 }
 
-a:hover, a:active {
-  background-color: none;
-  color: cadetblue;
+a:hover, a:active{
+	background-color: none;
+	color: cadetblue;
 }
 
 .spacer{
@@ -273,15 +281,14 @@ a:hover, a:active {
 }
 
 #CV-heading{
-	/*background-color: white;*/
 	background-image: url('bgimage.jpg');
 	background-size: cover;
 	background-position: bottom;
 	height: 300px;
-	color: lightgray;
+	color: black;
 	text-align: center;
-	border: 0px lightblue solid;
-	margin: 0px;
+	border: 0 solid lightblue;
+	margin: 0;
 	padding-top: 120px;
 }
 
@@ -295,18 +302,17 @@ a:hover, a:active {
 	margin-right: auto;
 	margin-bottom: 30px;
 	margin-top: 10px;
-	/*width: 1200px;*/
 }
 
 .internship tr:nth-child(even){
 	background-color: lightblue;
-	opacity:1;
+	opacity: 1;
 }
 
-.internship thead>tr{
-	text-align: center; 
-	background-color: lightgray; 
-	height:40px;  
+.internship thead > tr{
+	text-align: center;
+	background-color: lightgray;
+	height: 40px;
 	font-size: 16px;
 	color: black;
 	font-family: arial;
@@ -320,41 +326,24 @@ a:hover, a:active {
 	height: 300px;
 	color: lightgray;
 	text-align: center;
-	border: 0px lightblue solid;
-	margin: 0px;
+	border: 0 solid lightblue;
+	margin: 0;
 	padding-top: 120px;
-
-	/*position: relative;
-	top: 20px;
-	height: 80px;
-	background-color: white;
-	padding-top: 20px ;
-	padding-bottom: 20px;
-	margin-bottom: 10px;
-	border: 2px solid lightblue;
-	color: teal;
-	font-family: arial;
-	text-align: center;
-	margin-right: 10px;
-	margin-left: 10px;
-	margin-top: auto;
-	margin-bottom: auto;*/
-	/*width: 1200px;*/
 }
 
 #internship-footer{
 	position: fixed;
 	text-align: center;
-    bottom: 0px ;
-    width: 100%;
-    height: 30px; 
-    background: lightgray ;
-    opacity: 1.0;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	background: lightgray;
+	opacity: 1;
 }
 
 #back-to-top-button{
 	position: relative;
-	bottom: 0px;
+	bottom: 0;
 	text-align: left;
 	font-size: 35px;
 	color: steelblue;
@@ -386,8 +375,8 @@ a:hover, a:active {
 	background-position: bottom;
 	color: white;
 	text-align: center;
-	border: 0px lightblue solid;
-	margin: 0px;
+	border: 0 solid lightblue;
+	margin: 0;
 	padding-top: 120px;
 }
 
@@ -399,13 +388,11 @@ a:hover, a:active {
 	padding-right: 10%;
 	padding-top: 5%;
 	padding-bottom: 20%;
-
 }
 
-.ms-thesis-contents>div{
+.ms-thesis-contents > div{
 	margin-top: 30px;
 }
-
 
 #quote-box{
 	position: relative;
@@ -434,9 +421,8 @@ a:hover, a:active {
 	border: 2px lightblue solid;
 	padding: 40px;
 	font-family: sans-serif;
-	/*border: 1px white solid;*/
 	position: relative;
-	left: 0px;
+	left: 0;
 	color: black;
 }
 
@@ -444,24 +430,6 @@ a:hover, a:active {
 	margin-bottom: 40px;
 	margin-top: 10px;
 }
-
-.research-content{
-	margin: 10px;
-	border: 2px lightblue solid;
-	padding: 40px;
-	font-family: sans-serif;
-	/*border: 1px white solid;*/
-	position: relative;
-	left: 0px;
-	color: black;
-}
-
-.research-content h1{
-	margin-bottom: 40px;
-	margin-top: 10px;
-	font-size: 2em;
-}
-
 
 .ms-thesis-alumni table, .ms-thesis-alumni tr, .ms-thesis-alumni td{
 	text-align: left;
@@ -473,19 +441,237 @@ a:hover, a:active {
 	margin-right: auto;
 	margin-bottom: 30px;
 	margin-top: 10px;
-	/*width: 1200px;*/
 }
 
 .ms-thesis-alumni tr:nth-child(even){
 	background-color: lightblue;
-	opacity:1;
+	opacity: 1;
 }
 
-.ms-thesis-alumni thead>tr{
-	text-align: center; 
-	background-color: lightgray; 
-	height:40px;  
+.ms-thesis-alumni thead > tr{
+	text-align: center;
+	background-color: lightgray;
+	height: 40px;
 	font-size: 16px;
 	color: black;
 	font-family: arial;
+}
+
+.publication-card{
+	background: white;
+	border-radius: 20px;
+	padding: 32px;
+	margin-top: 30px;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+	max-width: 900px;
+}
+
+.publication-card h3{
+	font-size: 1.5rem;
+	margin-bottom: 14px;
+	line-height: 1.25;
+}
+
+.publication-authors{
+	font-size: 1rem;
+	margin-bottom: 10px;
+	color: #334;
+}
+
+.publication-meta{
+	font-size: 0.95rem;
+	color: #666;
+	margin-bottom: 16px;
+}
+
+.publication-links a{
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.publication-abstract{
+	margin-top: 20px;
+	line-height: 1.8;
+	color: #222;
+	font-size: 1rem;
+}
+
+.equal-contrib-note{
+	margin-top: 18px;
+	color: #555;
+}
+
+.teaching-card{
+	padding: 18px 0;
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+	max-width: 900px;
+}
+
+.teaching-card:last-child{
+	border-bottom: none;
+}
+
+.teaching-card h3{
+	font-size: 1.08rem;
+	font-weight: 600;
+	margin-bottom: 4px;
+	line-height: 1.4;
+	color: #111;
+}
+
+.teaching-meta{
+	font-size: 0.92rem;
+	color: #666;
+	margin-bottom: 6px;
+}
+
+.teaching-card p{
+	line-height: 1.65;
+	font-size: 0.98rem;
+	color: #222;
+	margin: 0;
+}
+
+.talk-entry{
+	padding: 16px 0;
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+	max-width: 850px;
+}
+
+.talk-entry:last-child{
+	border-bottom: none;
+}
+
+.talk-entry h3{
+	font-size: 1.05rem;
+	font-weight: 600;
+	margin-bottom: 4px;
+	line-height: 1.4;
+	color: #111;
+}
+
+.talk-meta{
+	font-size: 0.92rem;
+	color: #666;
+}
+
+.research-content{
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+
+.research-intro{
+	max-width: 920px;
+	line-height: 1.95;
+	font-size: 1.08rem;
+	margin-bottom: 34px;
+	margin-left: 30px;
+	margin-top: 20px;
+	color: #1f2933;
+}
+
+.research-block{
+	background: rgba(255,255,255,0.88);
+
+	border: 1px solid rgba(80, 110, 150, 0.10);
+
+	border-radius: 18px;
+
+	padding: 30px 34px;
+
+	margin: 26px 30px;
+
+	max-width: 980px;
+
+	box-shadow:
+		0 4px 20px rgba(0,0,0,0.035);
+
+	backdrop-filter: blur(4px);
+
+	transition:
+		transform 0.22s ease,
+		box-shadow 0.22s ease,
+		border-color 0.22s ease;
+}
+
+.research-block:hover{
+	transform: translateY(-2px);
+
+	box-shadow:
+		0 10px 30px rgba(0,0,0,0.06);
+
+	border-color: rgba(80, 110, 150, 0.18);
+}
+
+.research-block h3{
+	font-size: 1.32rem;
+
+	font-weight: 600;
+
+	margin-bottom: 18px;
+
+	line-height: 1.3;
+
+	color: #0f1722;
+
+	letter-spacing: -0.02em;
+}
+
+.research-block p{
+	line-height: 1.9;
+
+	font-size: 1rem;
+
+	color: #253241;
+
+	margin-bottom: 16px;
+
+	max-width: 74ch;
+}
+
+.research-block p:last-child{
+	margin-bottom: 0;
+}
+
+/* Responsive homepage */
+@media (max-width: 900px){
+	#image-title-container{
+		grid-template-columns: 1fr;
+		text-align: center;
+		gap: 24px;
+	}
+
+	#image{
+		grid-column: 1;
+		grid-row: auto;
+		margin: 0 auto;
+	}
+
+	#title,
+	#location,
+	#introtext,
+	#button-container{
+		grid-column: 1;
+	}
+
+	#introtext{
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#button-container{
+		justify-content: center;
+	}
+}
+
+.page-content{
+	margin: 10px;
+	border: 2px lightblue solid;
+	padding: 40px;
+	font-family: sans-serif;
+	position: relative;
+	left: 0;
+	color: black;
+	background: rgba(255,255,255,0.82);
+	backdrop-filter: blur(3px);
 }
